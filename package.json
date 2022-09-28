@@ -1,0 +1,24 @@
+{
+	"name": "@djs-user/collection",
+	"version": "1.0.2",
+	"description": "Collection Class for the Discord.js User Package",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "npm run build; echo 'Running Test\n\n'; node test/index.test.js",
+		"quickTest": "node test/index.test.js",
+		"build": "echo 'Compiling TypeScript\n'; rm -rf ./dist; npx tsc",
+		"ci": "npm install; npm update; rm -rf ./node_modules; rm ./package-lock.json; npm install;",
+		"pretty": "echo 'Prettifying Source'; npx prettier --write ./src/**; echo '\nPrettifying Tests'; npx prettier --write ./test/**/*;",
+		"docgen": "echo 'Generating Docs Files\n'; rm -rf ./docs; npx typedoc --tsconfig ./tsconfig.json; echo ''",
+		"ready": "npm run ci; npm run pretty; npm run build; npm run docgen"
+	},
+	"author": "TBHGodPro",
+	"license": "ISC",
+	"devDependencies": {
+		"@knodes/typedoc-plugin-code-blocks": "^0.23.1",
+		"prettier": "^2.7.1",
+		"typedoc": "^0.23.15",
+		"typedoc-plugin-replace-text": "^2.0.0",
+		"typescript": "^4.8.4"
+	}
+}
