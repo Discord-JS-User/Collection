@@ -1,9 +1,10 @@
 {
 	"name": "@djs-user/collection",
-	"version": "1.0.2",
-	"description": "Collection Class for the Discord.js User Package",
+	"version": "1.0.3",
+	"description": "Collection Class for Discord.js User with improved speed and abilities",
 	"main": "dist/index.js",
 	"scripts": {
+		"init": "node init",
 		"test": "npm run build; echo 'Running Test\n\n'; node test/index.test.js",
 		"quickTest": "node test/index.test.js",
 		"build": "echo 'Compiling TypeScript\n'; rm -rf ./dist; npx tsc",

@@ -1,6 +1,6 @@
 .git
 .github
 src
-docs
 test
+init.js
 SETUP.md

@@ -15,7 +15,7 @@
 			{
 				"pattern": "collection",
 				"flags": "gi",
-				"replace": "<a href=\"./Collection.html\">Collection</a>"
+				"replace": "<a href=\"/classes/Collection\">Collection</a>"
 			}
 		]
 	}

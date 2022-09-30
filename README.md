@@ -1,3 +1,3 @@
-# Discord.js User Collection
+# Discord.js User | Collection
 
-Collection Class for the [Discord.js User Package](https://github.com/Discord-JS-User)
+Collection Class for Discord.js User with improved speed and abilities
