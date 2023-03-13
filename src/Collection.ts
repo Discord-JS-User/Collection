@@ -115,7 +115,7 @@ export class Collection<V> extends Map<K, V> {
 	public filter(fn: InputFN<V, boolean>, thisArg?: unknown): Collection<V> {
 		if (typeof fn !== "function") throw new TypeError(`${fn} is not a function`);
 		if (typeof thisArg !== "undefined") fn = fn.bind(thisArg);
-		const results = new this.constructor[Symbol.species]<K, V>();
+		const results = new this.constructor[Symbol.species]<V>([], this.keyName);
 		for (const [key, val] of this) {
 			if (fn(val, key, this)) results.set(key, val);
 		}
@@ -131,7 +131,7 @@ export class Collection<V> extends Map<K, V> {
 	public async filterAsync(fn: InputFN<V, Promise<boolean>>, thisArg?: unknown): Promise<Collection<V>> {
 		if (typeof fn !== "function") throw new TypeError(`${fn} is not a function`);
 		if (typeof thisArg !== "undefined") fn = fn.bind(thisArg);
-		const results = new this.constructor[Symbol.species]<V>();
+		const results = new this.constructor[Symbol.species]<V>([], this.keyName);
 		await Promise.allSettled([...this].map(item => fn(item[1], item[0], this).then(r => (r ? results.set(item[0], item[1]) : null))));
 		return results;
 	}
@@ -147,7 +147,7 @@ export class Collection<V> extends Map<K, V> {
 	public map<T>(fn: InputFN<V, T>, thisArg?: unknown): Collection<T> {
 		if (typeof fn !== "function") throw new TypeError(`${fn} is not a function`);
 		if (typeof thisArg !== "undefined") fn = fn.bind(thisArg);
-		const coll = new this.constructor[Symbol.species]<K, T>();
+		const coll = new this.constructor[Symbol.species]<T>([], this.keyName);
 		for (const [key, val] of this) coll.set(key, fn(val, key, this));
 		return coll;
 	}
@@ -162,7 +162,7 @@ export class Collection<V> extends Map<K, V> {
 	public async mapAsync<T>(fn: InputFN<V, Promise<T>>, thisArg?: unknown): Promise<Collection<T>> {
 		if (typeof fn !== "function") throw new TypeError(`${fn} is not a function`);
 		if (typeof thisArg !== "undefined") fn = fn.bind(thisArg);
-		const coll = new this.constructor[Symbol.species]<K, T>();
+		const coll = new this.constructor[Symbol.species]<T>([], this.keyName);
 		await Promise.allSettled([...this].map(item => fn(item[1], item[0], this).then(v => coll.set(item[0], v))));
 		return coll;
 	}
